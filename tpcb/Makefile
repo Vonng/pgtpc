@@ -4,13 +4,14 @@
 PGURL?="postgres"
 TIME?=60
 SCALE?=1000
-FILLFACTOR?=70
+FILLFACTOR?=95
 
 init:
-	/usr/local/pgsql/bin/pg_ctl  -D ~/pgtpcb stop ; rm -rf ~/pgtpcb/;
-	/usr/local/pgsql/bin/initdb  -D ~/pgtpcb -E UTF-8 --locale=en_US.UTF-8 --lc-collate=C
+	pg_ctl  -D ~/pgtpcb stop ; rm -rf ~/pgtpcb/;
+	initdb  -D ~/pgtpcb -E UTF-8 --locale=en_US.UTF-8 --lc-collate=C
 	cp postgresql.auto.conf ~/pgtpcb/postgresql.auto.conf
-	/usr/local/pgsql/bin/pg_ctl  -D ~/pgtpcb start
+	echo 'host all all 0.0.0.0/0 trust' >> ~/pgtpcb/pg_hba.conf
+	pg_ctl  -D ~/pgtpcb start
 
 i:
 	pgbench -is $(SCALE) -F $(FILLFACTOR) $(PGURL)

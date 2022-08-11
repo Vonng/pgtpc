@@ -38,7 +38,7 @@ cp postgresql.auto.conf ~/pgtpcb/postgresql.auto.conf
 
 ```bash
 pgbench -is 1000 postgres
-pgbench -nv -P1 -r --select-only -T60 -M prepared  -c 1 postgres
+w
 pgbench -nv -P1 -r -T60 -M prepared  -c 1 postgres
 ```
 
