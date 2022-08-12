@@ -2,3 +2,6 @@
 pgtpc.iml
 .code
 .DS_Store
+
+tpcc/sysbench
+tpch/tpch-dbgen/

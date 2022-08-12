@@ -1,16 +1,17 @@
-# PGBIN?=/usr/local/pgsql/bin
-# PGDIR?="~/pgtpcb"
-
-PGURL?="postgres"
-TIME?=60
-SCALE?=1000
-FILLFACTOR?=95
 
 init:
 	pg_ctl  -D ~/pgtpcb stop ; rm -rf ~/pgtpcb/;
 	initdb  -D ~/pgtpcb -E UTF-8 --locale=en_US.UTF-8 --lc-collate=C
 	cp postgresql.auto.conf ~/pgtpcb/postgresql.auto.conf
 	echo 'host all all 0.0.0.0/0 trust' >> ~/pgtpcb/pg_hba.conf
+	pg_ctl  -D ~/pgtpcb start
+
+dump:
+	pg_ctl  -D ~/pgtpcb stop ; cp -r ~/pgtpcb ~/pgtpcb-backup
+
+copy:
+	pg_ctl  -D ~/pgtpcb stop ; rm -rf ~/pgtpcb/;
+	cp -r ~/pgtpcb-backup ~/pgtpcb
 	pg_ctl  -D ~/pgtpcb start
 
 i:
