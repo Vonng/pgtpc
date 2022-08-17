@@ -9,6 +9,6 @@ tpch/tpch-dbgen/
 
 
 terraform/.terraform
-terraform/.terraform.tfstate
 terraform/.terraform.lock.hcl
-terraform/.terraform.tfstate.backup
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
