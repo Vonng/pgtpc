@@ -73,8 +73,6 @@ Associated with z1d.2xlarge: 279.4G NVME SSD
 | 1MiB read      |  521  | 521 MiB/s |     246ms     |
 | 1MiB randrw    |  738  | 739 MiB/s |  178ms/160ms  |
 
-# 
-
 
 
 
