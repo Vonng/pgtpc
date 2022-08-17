@@ -37,20 +37,23 @@ MacBook Pro（16英寸，2021年） Apple M1 Max, 10 核心，64GB 内存， 8TB
 
 一些相对参考结果，注意使用的**硬件规格差异和仓数差异！**
 
-|   数据库   | TPC-H仓数 | 总耗时(s) |  测试环境   |                             来源                             |
-| :--------: | :-------: | :-------: | :---------: | :----------------------------------------------------------: |
-| PostgreSQL |     1     |     8     |  10C / 64G  |                            Vonng                             |
-| PostgreSQL |    10     |    56     |  10C / 64G  |                            Vonng                             |
-| PostgreSQL |    50     |   1327    |  10C / 64G  |                            Vonng                             |
-| PostgreSQL |    100    |   4835    |  10C / 64G  |                            Vonng                             |
-| ClickHouse |    100    |   11537   | 64C / 128G  | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |
-|  StoneDB   |    100    |   3388    | 64C / 128G  | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |
-|    TiDB    |    100    |    190    | 120C / 570G | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |
-| Greenplum  |    100    |    436    | 120C / 570G | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |
-|   Spark    |    100    |    388    | 120C / 570G | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |
-| OceanBase  |    100    |    189    | 96C / 384G  | [OceanBase](https://open.oceanbase.com/docs/community/oceanbase-database/V3.1.0/wtu4kv) |
-|  PolarDB   |    50     |    387    | 32C / 128G  | [阿里云](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%25E6%2580%25A7%25E8%2583%25BD%25E7%2599%25BD%25E7%259A%25AE%25E4%25B9%25A6_cn_zh-CN.pdf) |
-|  PolarDB   |    50     |    755    |  16C / 64G  | [阿里云](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%25E6%2580%25A7%25E8%2583%25BD%25E7%2599%25BD%25E7%259A%25AE%25E4%25B9%25A6_cn_zh-CN.pdf) |
+|   数据库   | TPC-H仓数 | 总耗时(s) |     测试环境      |                             来源                             |
+| :--------: | :-------: | :-------: | :---------------: | :----------------------------------------------------------: |
+| PostgreSQL |     1     |     8     |     10C / 64G     |                            Vonng                             |
+| PostgreSQL |    10     |    56     |     10C / 64G     |                            Vonng                             |
+| PostgreSQL |    50     |   1327    |     10C / 64G     |                            Vonng                             |
+| PostgreSQL |    100    |   4835    |     10C / 64G     |                            Vonng                             |
+| PostgreSQL |     1     |   13.51   | z1d.2xlarge 8C64G |                            Vonng                             |
+| PostgreSQL |    10     |  133.35   | z1d.2xlarge 8C64G |                            Vonng                             |
+|            |           |           |                   |                                                              |
+| ClickHouse |    100    |   11537   |    64C / 128G     | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |
+|  StoneDB   |    100    |   3388    |    64C / 128G     | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |
+|    TiDB    |    100    |    190    |    120C / 570G    | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |
+| Greenplum  |    100    |    436    |    120C / 570G    | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |
+|   Spark    |    100    |    388    |    120C / 570G    | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |
+| OceanBase  |    100    |    189    |    96C / 384G     | [OceanBase](https://open.oceanbase.com/docs/community/oceanbase-database/V3.1.0/wtu4kv) |
+|  PolarDB   |    50     |    387    |    32C / 128G     | [阿里云](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%25E6%2580%25A7%25E8%2583%25BD%25E7%2599%25BD%25E7%259A%25AE%25E4%25B9%25A6_cn_zh-CN.pdf) |
+|  PolarDB   |    50     |    755    |     16C / 64G     | [阿里云](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%25E6%2580%25A7%25E8%2583%25BD%25E7%2599%25BD%25E7%259A%25AE%25E4%25B9%25A6_cn_zh-CN.pdf) |
 
 
 

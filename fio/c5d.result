@@ -1,0 +1,224 @@
+Jobs: 1 (f=1): [w(1)][100.0%][r=0KiB/s,w=749MiB/s][r=0,w=95.8k IOPS][eta 00m:00s]
+8krandw: (groupid=0, jobs=1): err= 0: pid=43902: Wed Aug 17 15:57:36 2022
+  write: IOPS=97.9k, BW=765MiB/s (802MB/s)(44.8GiB/60002msec)
+    slat (nsec): min=1857, max=1988.6k, avg=8352.68, stdev=23715.67
+    clat (usec): min=18, max=5145, avg=1298.82, stdev=305.80
+     lat (usec): min=21, max=5147, avg=1307.23, stdev=305.95
+    clat percentiles (usec):
+     |  1.00th=[   71],  5.00th=[  955], 10.00th=[ 1270], 20.00th=[ 1287],
+     | 30.00th=[ 1303], 40.00th=[ 1319], 50.00th=[ 1336], 60.00th=[ 1336],
+     | 70.00th=[ 1352], 80.00th=[ 1352], 90.00th=[ 1385], 95.00th=[ 1401],
+     | 99.00th=[ 2278], 99.50th=[ 2442], 99.90th=[ 2835], 99.95th=[ 2966],
+     | 99.99th=[ 3294]
+   bw (  KiB/s): min=764928, max=1090704, per=100.00%, avg=783093.91, stdev=61333.64, samples=120
+   iops        : min=95616, max=136338, avg=97886.73, stdev=7666.71, samples=120
+  lat (usec)   : 20=0.01%, 50=0.32%, 100=2.14%, 250=1.66%, 500=0.22%
+  lat (usec)   : 750=0.18%, 1000=0.60%
+  lat (msec)   : 2=92.61%, 4=2.25%, 10=0.01%
+  cpu          : usr=11.44%, sys=23.37%, ctx=822603, majf=0, minf=32
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=100.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.1%
+     issued rwts: total=0,5873427,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=128
+
+Run status group 0 (all jobs):
+  WRITE: bw=765MiB/s (802MB/s), 765MiB/s-765MiB/s (802MB/s-802MB/s), io=44.8GiB (48.1GB), run=60002-60002msec
+
+Disk stats (read/write):
+  nvme4n1: ios=0/5860220, merge=0/0, ticks=0/7398909, in_queue=7398909, util=99.89%
+
+[08-17 15:57:36] root@pg-test-1:/data2
+$ fio -name=8krandr  -runtime=60 -filename=/data2/rand.txt -ioengine=libaio -direct=1  -bs=8K  -size=10g  -iodepth=128  -numjobs=1  -rw=randread -group_reporting -time_based # 8K  随机读
+8krandr: (g=0): rw=randread, bs=(R) 8192B-8192B, (W) 8192B-8192B, (T) 8192B-8192B, ioengine=libaio, iodepth=128
+fio-3.7
+Starting 1 process
+Jobs: 1 (f=1): [r(1)][100.0%][r=1589MiB/s,w=0KiB/s][r=203k,w=0 IOPS][eta 00m:00s]
+8krandr: (groupid=0, jobs=1): err= 0: pid=44096: Wed Aug 17 15:58:37 2022
+   read: IOPS=207k, BW=1617MiB/s (1695MB/s)(94.7GiB/60002msec)
+    slat (nsec): min=1399, max=392179, avg=3965.76, stdev=8955.29
+    clat (usec): min=60, max=6592, avg=614.15, stdev=389.34
+     lat (usec): min=62, max=6594, avg=618.18, stdev=389.37
+    clat percentiles (usec):
+     |  1.00th=[  137],  5.00th=[  180], 10.00th=[  223], 20.00th=[  314],
+     | 30.00th=[  404], 40.00th=[  478], 50.00th=[  537], 60.00th=[  603],
+     | 70.00th=[  693], 80.00th=[  824], 90.00th=[ 1057], 95.00th=[ 1352],
+     | 99.00th=[ 2089], 99.50th=[ 2409], 99.90th=[ 3064], 99.95th=[ 3326],
+     | 99.99th=[ 3916]
+   bw (  MiB/s): min= 1469, max= 1802, per=100.00%, avg=1616.77, stdev=80.08, samples=120
+   iops        : min=188040, max=230688, avg=206946.53, stdev=10249.63, samples=120
+  lat (usec)   : 100=0.03%, 250=13.13%, 500=30.78%, 750=30.92%, 1000=13.36%
+  lat (msec)   : 2=10.54%, 4=1.22%, 10=0.01%
+  cpu          : usr=20.82%, sys=37.18%, ctx=759395, majf=0, minf=292
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=100.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.1%
+     issued rwts: total=12416921,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=128
+
+Run status group 0 (all jobs):
+   READ: bw=1617MiB/s (1695MB/s), 1617MiB/s-1617MiB/s (1695MB/s-1695MB/s), io=94.7GiB (102GB), run=60002-60002msec
+
+Disk stats (read/write):
+  nvme4n1: ios=12389859/2, merge=0/0, ticks=7327570/0, in_queue=7327569, util=99.87%
+
+[08-17 15:58:37] root@pg-test-1:/data2
+$ fio -name=8krandrw -runtime=60 -filename=/data2/rand.txt -ioengine=libaio -direct=1  -bs=8k  -size=10g  -iodepth=128  -numjobs=1  -rw=randrw -rwmixwrite=30  -group_reporting -time_based # 8k混合读写
+8krandrw: (g=0): rw=randrw, bs=(R) 8192B-8192B, (W) 8192B-8192B, (T) 8192B-8192B, ioengine=libaio, iodepth=128
+fio-3.7
+Starting 1 process
+Jobs: 1 (f=1): [m(1)][100.0%][r=815MiB/s,w=347MiB/s][r=104k,w=44.4k IOPS][eta 00m:00s]
+8krandrw: (groupid=0, jobs=1): err= 0: pid=44289: Wed Aug 17 15:59:37 2022
+   read: IOPS=117k, BW=914MiB/s (959MB/s)(53.6GiB/60005msec)
+    slat (nsec): min=1411, max=913398, avg=4828.10, stdev=12822.81
+    clat (usec): min=62, max=10045, avg=1031.29, stdev=1011.45
+     lat (usec): min=64, max=10046, avg=1036.18, stdev=1011.71
+    clat percentiles (usec):
+     |  1.00th=[  133],  5.00th=[  182], 10.00th=[  231], 20.00th=[  310],
+     | 30.00th=[  388], 40.00th=[  482], 50.00th=[  635], 60.00th=[  889],
+     | 70.00th=[ 1205], 80.00th=[ 1565], 90.00th=[ 2343], 95.00th=[ 3359],
+     | 99.00th=[ 4686], 99.50th=[ 5145], 99.90th=[ 6194], 99.95th=[ 6652],
+     | 99.99th=[ 7635]
+   bw (  KiB/s): min=767952, max=1049424, per=100.00%, avg=936170.59, stdev=65282.02, samples=120
+   iops        : min=95994, max=131178, avg=117021.30, stdev=8160.25, samples=120
+  write: IOPS=50.1k, BW=392MiB/s (411MB/s)(22.0GiB/60005msec)
+    slat (nsec): min=1902, max=631237, avg=5542.26, stdev=12161.05
+    clat (usec): min=19, max=4537, avg=127.64, stdev=159.37
+     lat (usec): min=22, max=4539, avg=133.24, stdev=159.83
+    clat percentiles (usec):
+     |  1.00th=[   38],  5.00th=[   59], 10.00th=[   67], 20.00th=[   73],
+     | 30.00th=[   79], 40.00th=[   84], 50.00th=[   89], 60.00th=[   96],
+     | 70.00th=[  104], 80.00th=[  119], 90.00th=[  163], 95.00th=[  363],
+     | 99.00th=[  914], 99.50th=[ 1139], 99.90th=[ 1713], 99.95th=[ 1926],
+     | 99.99th=[ 2507]
+   bw (  KiB/s): min=328592, max=445680, per=100.00%, avg=401182.88, stdev=27619.15, samples=120
+   iops        : min=41074, max=55712, avg=50147.86, stdev=3452.40, samples=120
+  lat (usec)   : 20=0.01%, 50=0.84%, 100=18.91%, 250=16.88%, 500=21.51%
+  lat (usec)   : 750=9.92%, 1000=6.22%
+  lat (msec)   : 2=16.77%, 4=7.14%, 10=1.81%, 20=0.01%
+  cpu          : usr=19.15%, sys=34.35%, ctx=648162, majf=0, minf=34
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=100.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.1%
+     issued rwts: total=7021509,3008931,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=128
+
+Run status group 0 (all jobs):
+   READ: bw=914MiB/s (959MB/s), 914MiB/s-914MiB/s (959MB/s-959MB/s), io=53.6GiB (57.5GB), run=60005-60005msec
+  WRITE: bw=392MiB/s (411MB/s), 392MiB/s-392MiB/s (411MB/s-411MB/s), io=22.0GiB (24.6GB), run=60005-60005msec
+
+Disk stats (read/write):
+  nvme4n1: ios=7006602/3002321, merge=0/0, ticks=7039057/289889, in_queue=7328946, util=99.87%
+
+[08-17 15:59:37] root@pg-test-1:/data2
+$ fio -name=1mseqw   -runtime=60 -filename=/data2/seq.txt  -ioengine=libaio -direct=1  -bs=1024k  -size=20g  -iodepth=128  -numjobs=1  -rw=write -group_reporting -time_based # 1Mb  顺序写
+1mseqw: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=128
+fio-3.7
+Starting 1 process
+1mseqw: Laying out IO file (1 file / 20480MiB)
+Jobs: 1 (f=1): [W(1)][100.0%][r=0KiB/s,w=749MiB/s][r=0,w=748 IOPS][eta 00m:00s]
+1mseqw: (groupid=0, jobs=1): err= 0: pid=44479: Wed Aug 17 16:00:37 2022
+  write: IOPS=763, BW=763MiB/s (800MB/s)(44.7GiB/60020msec)
+    slat (usec): min=53, max=18896, avg=1308.33, stdev=2732.50
+    clat (msec): min=18, max=187, avg=166.27, stdev=14.22
+     lat (msec): min=20, max=188, avg=167.58, stdev=14.30
+    clat percentiles (msec):
+     |  1.00th=[  110],  5.00th=[  128], 10.00th=[  161], 20.00th=[  161],
+     | 30.00th=[  169], 40.00th=[  169], 50.00th=[  169], 60.00th=[  169],
+     | 70.00th=[  169], 80.00th=[  171], 90.00th=[  180], 95.00th=[  180],
+     | 99.00th=[  180], 99.50th=[  180], 99.90th=[  184], 99.95th=[  186],
+     | 99.99th=[  186]
+   bw (  KiB/s): min=741376, max=1124352, per=99.75%, avg=779635.28, stdev=60580.49, samples=120
+   iops        : min=  724, max= 1098, avg=761.35, stdev=59.16, samples=120
+  lat (msec)   : 20=0.01%, 50=0.05%, 100=0.09%, 250=99.86%
+  cpu          : usr=3.80%, sys=2.36%, ctx=30100, majf=0, minf=28
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=99.9%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.1%
+     issued rwts: total=0,45812,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=128
+
+Run status group 0 (all jobs):
+  WRITE: bw=763MiB/s (800MB/s), 763MiB/s-763MiB/s (800MB/s-800MB/s), io=44.7GiB (48.0GB), run=60020-60020msec
+
+Disk stats (read/write):
+  nvme4n1: ios=0/410798, merge=0/2, ticks=0/8724022, in_queue=8724022, util=99.76%
+
+[08-17 16:00:37] root@pg-test-1:/data2
+$ fio -name=1mseqr   -runtime=60 -filename=/data2/seq.txt  -ioengine=libaio -direct=1  -bs=1024k  -size=20g  -iodepth=128  -numjobs=1  -rw=read -group_reporting -time_based # 1Mb  顺序读
+1mseqr: (g=0): rw=read, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=128
+fio-3.7
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=1589MiB/s,w=0KiB/s][r=1589,w=0 IOPS][eta 00m:00s]
+1mseqr: (groupid=0, jobs=1): err= 0: pid=44682: Wed Aug 17 16:01:38 2022
+   read: IOPS=1619, BW=1620MiB/s (1698MB/s)(94.9GiB/60009msec)
+    slat (usec): min=32, max=8967, avg=616.38, stdev=263.43
+    clat (usec): min=8487, max=88115, avg=78387.85, stdev=7100.18
+     lat (usec): min=9090, max=88739, avg=79004.33, stdev=7154.01
+    clat percentiles (usec):
+     |  1.00th=[45876],  5.00th=[74974], 10.00th=[79168], 20.00th=[79168],
+     | 30.00th=[80217], 40.00th=[80217], 50.00th=[80217], 60.00th=[80217],
+     | 70.00th=[80217], 80.00th=[80217], 90.00th=[80217], 95.00th=[80217],
+     | 99.00th=[80217], 99.50th=[80217], 99.90th=[86508], 99.95th=[87557],
+     | 99.99th=[87557]
+   bw (  MiB/s): min= 1294, max= 2734, per=99.73%, avg=1615.27, stdev=170.85, samples=120
+   iops        : min= 1294, max= 2734, avg=1615.27, stdev=170.85, samples=120
+  lat (msec)   : 10=0.01%, 20=0.02%, 50=4.64%, 100=95.34%
+  cpu          : usr=0.19%, sys=5.64%, ctx=102334, majf=0, minf=32802
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=99.9%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.1%
+     issued rwts: total=97191,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=128
+
+Run status group 0 (all jobs):
+   READ: bw=1620MiB/s (1698MB/s), 1620MiB/s-1620MiB/s (1698MB/s-1698MB/s), io=94.9GiB (102GB), run=60009-60009msec
+
+Disk stats (read/write):
+  nvme4n1: ios=872671/2, merge=0/0, ticks=7411399/0, in_queue=7411399, util=99.88%
+
+[08-17 16:01:38] root@pg-test-1:/data2
+$ fio -name=1mseqrw  -runtime=60 -filename=/data2/seq.txt  -ioengine=libaio -direct=1  -bs=1024k  -size=20g  -iodepth=128  -numjobs=1  -rw=rw -rwmixwrite=30  -group_reporting -time_based # 1Mb混合读写
+1mseqrw: (g=0): rw=rw, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=128
+fio-3.7
+Starting 1 process
+Jobs: 1 (f=1): [M(1)][100.0%][r=1364MiB/s,w=567MiB/s][r=1364,w=566 IOPS][eta 00m:00s]
+1mseqrw: (groupid=0, jobs=1): err= 0: pid=44884: Wed Aug 17 16:02:38 2022
+   read: IOPS=1317, BW=1318MiB/s (1382MB/s)(77.3GiB/60027msec)
+    slat (usec): min=31, max=7384, avg=551.47, stdev=303.59
+    clat (usec): min=27934, max=95142, avg=58357.69, stdev=3588.23
+     lat (usec): min=28527, max=95735, avg=58909.26, stdev=3596.46
+    clat percentiles (usec):
+     |  1.00th=[50594],  5.00th=[53216], 10.00th=[54264], 20.00th=[55313],
+     | 30.00th=[56361], 40.00th=[57410], 50.00th=[57934], 60.00th=[58983],
+     | 70.00th=[59507], 80.00th=[61080], 90.00th=[63177], 95.00th=[64750],
+     | 99.00th=[68682], 99.50th=[69731], 99.90th=[72877], 99.95th=[73925],
+     | 99.99th=[87557]
+   bw (  MiB/s): min= 1148, max= 1494, per=99.95%, avg=1317.34, stdev=55.66, samples=120
+   iops        : min= 1148, max= 1494, avg=1317.34, stdev=55.66, samples=120
+  write: IOPS=561, BW=562MiB/s (589MB/s)(32.9GiB/60027msec)
+    slat (usec): min=45, max=3774, avg=481.41, stdev=260.75
+    clat (msec): min=25, max=129, avg=89.04, stdev= 8.55
+     lat (msec): min=26, max=131, avg=89.52, stdev= 8.56
+    clat percentiles (msec):
+     |  1.00th=[   68],  5.00th=[   74], 10.00th=[   78], 20.00th=[   83],
+     | 30.00th=[   86], 40.00th=[   88], 50.00th=[   90], 60.00th=[   92],
+     | 70.00th=[   94], 80.00th=[   96], 90.00th=[  100], 95.00th=[  103],
+     | 99.00th=[  108], 99.50th=[  111], 99.90th=[  115], 99.95th=[  120],
+     | 99.99th=[  125]
+   bw (  KiB/s): min=493568, max=630784, per=99.87%, avg=574727.08, stdev=26449.17, samples=120
+   iops        : min=  482, max=  616, avg=561.25, stdev=25.82, samples=120
+  lat (msec)   : 50=0.53%, 100=96.88%, 250=2.59%
+  cpu          : usr=3.05%, sys=6.38%, ctx=115698, majf=0, minf=32
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=99.9%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.1%
+     issued rwts: total=79112,33733,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=128
+
+Run status group 0 (all jobs):
+   READ: bw=1318MiB/s (1382MB/s), 1318MiB/s-1318MiB/s (1382MB/s-1382MB/s), io=77.3GiB (82.0GB), run=60027-60027msec
+  WRITE: bw=562MiB/s (589MB/s), 562MiB/s-562MiB/s (589MB/s-589MB/s), io=32.9GiB (35.4GB), run=60027-60027msec
+
+Disk stats (read/write):
+  nvme4n1: ios=710034/302486, merge=0/0, ticks=2272055/5176882, in_queue=7448937, util=99.75%

@@ -1,0 +1,6 @@
+fio -name=8krandw  -runtime=60 -filename=/data2/rand.txt -ioengine=libaio -direct=1  -bs=8K  -size=10g  -iodepth=128  -numjobs=1  -rw=randwrite -group_reporting -time_based # 8k  随机写
+fio -name=8krandr  -runtime=60 -filename=/data2/rand.txt -ioengine=libaio -direct=1  -bs=8K  -size=10g  -iodepth=128  -numjobs=1  -rw=randread -group_reporting -time_based # 8K  随机读
+fio -name=8krandrw -runtime=60 -filename=/data2/rand.txt -ioengine=libaio -direct=1  -bs=8k  -size=10g  -iodepth=128  -numjobs=1  -rw=randrw -rwmixwrite=30  -group_reporting -time_based # 8k混合读写
+fio -name=1mseqw   -runtime=60 -filename=/data2/seq.txt  -ioengine=libaio -direct=1  -bs=1024k  -size=20g  -iodepth=128  -numjobs=1  -rw=write -group_reporting -time_based # 1Mb  顺序写
+fio -name=1mseqr   -runtime=60 -filename=/data2/seq.txt  -ioengine=libaio -direct=1  -bs=1024k  -size=20g  -iodepth=128  -numjobs=1  -rw=read -group_reporting -time_based # 1Mb  顺序读
+fio -name=1mseqrw  -runtime=60 -filename=/data2/seq.txt  -ioengine=libaio -direct=1  -bs=1024k  -size=20g  -iodepth=128  -numjobs=1  -rw=rw -rwmixwrite=30  -group_reporting -time_based # 1Mb混合读写

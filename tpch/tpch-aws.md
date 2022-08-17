@@ -57,3 +57,11 @@ psql tpch -f ddl/index.ddl;
 ./run
 ```
 
+
+
+
+
+## Z1D.2XLARGE
+
+8C 64G 300GB NVME SSD
+
