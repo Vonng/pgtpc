@@ -2,6 +2,7 @@
 pgtpc.iml
 .code
 .DS_Store
+.vscode
 
 tpcc/sysbench
 tpch/tpch-dbgen/

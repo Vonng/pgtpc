@@ -2,13 +2,10 @@
 
 
 * [TPC-B for PostgreSQL](tpcb/)
-* [TPC-B for PostgreSQL](tpcc/)
+* [TPC-C for PostgreSQL](tpcc/)
 * [TPC-H for PostgreSQL](tpch/)
 
 ----------------------
-
-
-
 
 
 # Apple M1 Max
@@ -33,11 +30,11 @@ s = 160M , PointSelect = 170K QPS , PointUpdate = 68K QPS, RW Xact = 3912 tps
 
 
 |     mode \ thread     |      1       |      2       |       4       |       8       |
-| :-------------------: | :----------: | :----------: | :-----------: | :-----------: |
+| :-------------------: |:------------:| :----------: | :-----------: | :-----------: |
 |   oltp_point_select   | 41215 / 20µs | 80037 / 20µs | 150319 / 30µs | 170095 / 50µs |
-| oltp_update_non_index | 15583 / 60¨s |  31642 / 60µs | 51131 / 80µs |  67958 / 120µs  |
-|   oltp_update_index   | 12703 / 80µs  |  23376 / 90µs  | 37165 / 110µs | 48490 / 160µs  |
-|    oltp_read_write    | 885 / 1130µs  | 1370 / 1460µs | 2694/ 1480µs  | 3912/ 2040ms  |
+| oltp_update_non_index | 15583 / 60µs |  31642 / 60µs | 51131 / 80µs |  67958 / 120µs  |
+|   oltp_update_index   | 12703 / 80µs |  23376 / 90µs  | 37165 / 110µs | 48490 / 160µs  |
+|    oltp_read_write    | 885 / 1130µs | 1370 / 1460µs | 2694/ 1480µs  | 3912/ 2040ms  |
 
 
 Conpare with TiDB 6.0 on **72C / 234G** , PointSelect = 424K QPS , PointUpdate = 59K QPS, RWXact = 6029 tps

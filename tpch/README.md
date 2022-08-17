@@ -304,6 +304,11 @@ sed 's/|$//' orders.tbl    | psql tpch -c "COPY orders    FROM STDIN DELIMITER '
 sed 's/|$//' lineitem.tbl  | psql tpch -c "COPY lineitem  FROM STDIN DELIMITER '|';"
 ```
 
+
+```bash
+psql tpch -f ddl/index.ddl;
+```
+
 **run query**
 
 ```bash
