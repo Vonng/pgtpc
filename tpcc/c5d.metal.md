@@ -38,8 +38,6 @@ sb --time=30 --threads=256 oltp_point_select.lua run > /tmp/sysbench/oltp_point_
 sb --time=30 --threads=384 oltp_point_select.lua run > /tmp/sysbench/oltp_point_select-384 
 sb --time=30 --threads=512 oltp_point_select.lua run > /tmp/sysbench/oltp_point_select-512 
 
-
-
 mkdir -p /tmp/sysbench
 sb --time=15 --threads=96 select_random_points.lua  run > /tmp/sysbench/select_random_points.res                      
 sb --time=15 --threads=96 select_random_ranges.lua  run > /tmp/sysbench/select_random_ranges.res                      

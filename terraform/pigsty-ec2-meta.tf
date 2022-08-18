@@ -4,7 +4,7 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
 resource "aws_instance" "pigsty-meta" {
   ami                         = "ami-01cb2ecea35798f3f"
-  instance_type               = "t2.micro"
+  instance_type               = "z1d.2xlarge"
   key_name                    = "pigsty-key"
   private_ip                  = "10.10.10.10"
   associate_public_ip_address = true
