@@ -5,7 +5,6 @@ PGBENCH TPC-B Like on different hardwares. s = 1000, 10e8 tuples.
 Run with different client numbers for 1 minute, get TPS & Latency
 
 
-
 ## Summary
 
 s = 1000, Read Only TPS
@@ -125,5 +124,3 @@ CPU 3.4GHz, NVME SSD 100GB
 |  s=1000, RO, LAT   | 155  |  194  | 393  |  789  | 1787 | 3763 |
 |  s=1000, RW, TPS   | 634  | 1132  | 2152 | 2938  | 3524 | 3831 |
 |  s=1000, RW, LAT   | 1573 | 1762  | 1851 | 2707  | 4493 | 4960 |
-
-### 

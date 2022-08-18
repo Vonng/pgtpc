@@ -1,10 +1,25 @@
 # PostgreSQL TPC-C Performence
 
 
+## Summary
+
+
+|         Mode          | PostgreSQL |   TiDB    | Oceanbase | MySQL |
+|:---------------------:| :--------: | :-------: | :-------: | :---: |
+|   oltp_point_select   |  1014092   |  407625   |  401404   |       |
+| oltp_update_non_index |   481838   |   62084   |           |       |
+|   oltp_update_index   |   433703   |   26431   |           |       |
+|    oltp_read_write    |   28135    |   6223    |           |       |
+|    oltp_read_only     |   810438   |           |  279067   |       |
+|    oltp_write_only    |   508030   |           |  119307   |       |
+|    oltp_read_write    |   506510   |           |  157859   |       |
+|                       |            |           |           |       |
+|         Spec          |  92C 192G  | 108C 510G | 96C 384G  |       |
 
 
 
-## Result: PostgreSQL 14.4
+
+## Result: PostgreSQL 14.4 on Macbook M1 Max
 
 SPEC: **10C / 64G**, Apple Macbook Pro M1 Max，PostgreSQL: 14.4, 20M Table x 8
 
@@ -16,26 +31,49 @@ SPEC: **10C / 64G**, Apple Macbook Pro M1 Max，PostgreSQL: 14.4, 20M Table x 8
 |    oltp_read_write    | 885 / 1130µs  | 1370 / 1460µs | 2694/ 1480µs  | 3912/ 2040ms  |
 
 
+## Result: PostgreSQL 14.4 on C5D.Metal
+
+oltp_delete:           tps:  367635
+oltp_insert:           tps:  178625
+oltp_point_select:     tps:  1014092
+oltp_read_only:        tps:  44085
+oltp_read_write:       tps:  28135
+oltp_update_index:     tps:  433703
+oltp_update_non_index: tps:  481838
+oltp_write_only:       tps:  82388
+select_random_points:  tps:  214814
+select_random_ranges:  tps:  24746
+
+
+|         mode          |  PostgreSQL |  TiDB  |
+| :-------------------: |:-----------:|:------:|
+|   oltp_point_select   |   1014092   | 407625 |
+| oltp_update_non_index |   481838    | 62084  |
+|   oltp_update_index   |   433703    | 26431  |
+|    oltp_read_write    |    28135    |  6223  |
 
 ## Reference: TiDB 6.0
 
-SPEC: **72C / 234G** ，3xPD 3xTiDB 3xTiKV , TiDB 6.0, 10M Table x 16
+[TiDB 6.1 sysbench](Reference: https://docs.pingcap.com/tidb/stable/benchmark-sysbench-v6.0.0-vs-v5.4.0)
 
-* PD: 4C 16G x 3, m5.xlarge x3
-* TiKV: 4C 30G x 3, i3.4xlarge x 3
-* TiDB: 16C 32G x 3, c5.4xlarge x 3
-* Sysbench: c5.9xlarge x1
+|         mode          | BEST (TPS) |
+| :-------------------: | :--------: |
+|   oltp_point_select   |   407625   |
+| oltp_update_non_index |   62084    |
+|   oltp_update_index   |   26431    |
+|    oltp_read_write    |    6223    |
 
+**Hardware Spec**
 
-|         mode          |  300   |  600   |  900   |
-| :-------------------: | :----: | :----: | :----: |
-|   oltp_point_select   | 265208 | 365174 | 424031 |
-| oltp_update_non_index | 40814  | 51746  | 59095  |
-|   oltp_update_index   | 18187  | 22270  | 25118  |
-|    oltp_read_write    |  4829  |  5693  |  6029  |
+Compute power of PD + TiKV + TiDB is roughly equivalent to c5d.metal (92C 192G)
 
-Reference: https://docs.pingcap.com/tidb/stable/benchmark-sysbench-v6.0.0-vs-v5.4.0
-
+|  Service type  |  EC2 type  | Count | CPU  | Mem  | Freq |
+| :------------: | :--------: | :---: | :--: | :--: | :--: |
+|       PD       | m5.xlarge  |   3   |  4   |  16  | 3.1  |
+|      TiKV      | i3.4xlarge |   3   |  16  | 122  | 2.3  |
+|      TiDB      | c5.4xlarge |   3   |  16  |  32  | 3.4  |
+| **Sum(Above)** |            |       | 108  | 510G |      |
+|    Sysbench    | c5.9xlarge |   1   |  36  |  72  | 3.4  |
 
 
 
@@ -45,8 +83,7 @@ Reference: https://docs.pingcap.com/tidb/stable/benchmark-sysbench-v6.0.0-vs-v5.
 **install sysbench**
 
 ```bash
-brew install auto
-git clone git@github.com:akopytov/sysbench.git;
+git clone https://github.com:akopytov/sysbench
 cd sysbench; ./autogen.sh
 ./configure --without-mysql --with-pgsql --with-system-luajit
 make -j8;

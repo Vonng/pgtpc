@@ -1,0 +1,15 @@
+pgbench (14.5)
+transaction type: <builtin: select only>
+scaling factor: 1000
+query mode: simple
+number of clients: 160
+number of threads: 160
+duration: 180 s
+number of transactions actually processed: 122597961
+latency average = 0.234 ms
+latency stddev = 0.161 ms
+initial connection time = 159.534 ms
+tps = 681453.893277 (without initial connection time)
+statement latencies in milliseconds:
+         0.001  \set aid random(1, 100000 * :scale)
+         0.246  SELECT abalance FROM pgbench_accounts WHERE aid = :aid;
