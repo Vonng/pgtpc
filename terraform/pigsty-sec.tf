@@ -41,47 +41,46 @@ resource "aws_security_group_rule" "public_out" {
   security_group_id = aws_security_group.pigsty_sg.id
 }
 
-# allow ssh public in
-resource "aws_security_group_rule" "public_in_ssh" {
- type              = "ingress"
- from_port         = 22
- to_port           = 22
- protocol          = "tcp"
- cidr_blocks       = ["0.0.0.0/0"]
- security_group_id = aws_security_group.pigsty_sg.id
-}
+resource "aws_security_group_rule" "public_in" {
+  type      = "ingress"
+  from_port = 0
+  to_port   = 0
+  protocol  = "-1"
 
-# allow grafana direct port access
-resource "aws_security_group_rule" "public_in_https" {
- type              = "ingress"
- from_port         = 3000
- to_port           = 3000
- protocol          = "tcp"
- cidr_blocks       = ["0.0.0.0/0"]
- security_group_id = aws_security_group.pigsty_sg.id
+  # TODO: LIMIT ACCESS WITH YOUR OWN CIDR BLOCKS!!!!
+  # OTHERWISE ALL SERVICES WILL BE OPENED TO THE WORLD!!!!
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "Public Access In"
+  security_group_id = aws_security_group.pigsty_sg.id
 }
 
 
-
-# allow http in (not available in mainland china)
+## allow ssh public in
+#resource "aws_security_group_rule" "public_in_ssh" {
+# type              = "ingress"
+# from_port         = 22
+# to_port           = 22
+# protocol          = "tcp"
+# cidr_blocks       = ["0.0.0.0/0"]
+# security_group_id = aws_security_group.pigsty_sg.id
+#}
+#
+## allow grafana direct port access
+#resource "aws_security_group_rule" "public_in_https" {
+# type              = "ingress"
+# from_port         = 3000
+# to_port           = 3000
+# protocol          = "tcp"
+# cidr_blocks       = ["0.0.0.0/0"]
+# security_group_id = aws_security_group.pigsty_sg.id
+#}
+#
+## allow http in (not available in mainland china)
 #resource "aws_security_group_rule" "public_in_http" {
 #  type              = "ingress"
 #  from_port         = 80
 #  to_port           = 80
 #  protocol          = "tcp"
 #  cidr_blocks       = ["0.0.0.0/0"]
-#  security_group_id = aws_security_group.pigsty_sg.id
-#}
-
-#resource "aws_security_group_rule" "public_in" {
-#  type      = "ingress"
-#  from_port = 0
-#  to_port   = 0
-#  protocol  = "-1"
-#
-#  # TODO: LIMIT ACCESS WITH YOUR OWN CIDR BLOCKS!!!!
-#  # OTHERWISE ALL SERVICES WILL BE OPENED TO THE WORLD!!!!
-#  cidr_blocks       = ["0.0.0.0/0"]
-#  description       = "Public Access In"
 #  security_group_id = aws_security_group.pigsty_sg.id
 #}

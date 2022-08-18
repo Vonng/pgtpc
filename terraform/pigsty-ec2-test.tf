@@ -31,9 +31,9 @@ output "oltp_ip" {
 }
 
 # mount nvme ssd before use
-# mkdir /data /data1 /data2 /data3
-# mkfs -t xfs /dev/nvme0n1; mkfs -t xfs /dev/nvme1n1; mkfs -t xfs /dev/nvme3n1; mkfs -t xfs /dev/nvme4n1;
-# mount -t xfs /dev/nvme0n1 /data ; mount -t xfs /dev/nvme1n1 /data1; mount -t xfs /dev/nvme3n1 /data2; mount -t xfs /dev/nvme4n1 /data3;
+#mkdir /data /data1 /data2 /data3
+#mkfs -t xfs /dev/nvme0n1; mkfs -t xfs /dev/nvme1n1; mkfs -t xfs /dev/nvme3n1; mkfs -t xfs /dev/nvme4n1;
+#mount -t xfs /dev/nvme0n1 /data ; mount -t xfs /dev/nvme1n1 /data1; mount -t xfs /dev/nvme3n1 /data2; mount -t xfs /dev/nvme4n1 /data3;
 
 
 ################################

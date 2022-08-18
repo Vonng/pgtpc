@@ -1,0 +1,24 @@
+Host meta
+  HostName 52.83.247.151
+  User centos
+  StrictHostKeyChecking no
+  IdentityFile /Users/vonng/.ssh/pigsty-key
+  PubKeyAuthentication yes
+  PasswordAuthentication no
+  ServerAliveInterval 60
+
+Host oltp
+  HostName 69.230.250.224
+  User centos
+  StrictHostKeyChecking no
+  IdentityFile /Users/vonng/.ssh/pigsty-key
+  PubKeyAuthentication yes
+  PasswordAuthentication no
+
+Host olap
+  HostName 161.189.95.174
+  User centos
+  StrictHostKeyChecking no
+  IdentityFile /Users/vonng/.ssh/pigsty-key
+  PubKeyAuthentication yes
+  PasswordAuthentication no

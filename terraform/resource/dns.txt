@@ -1,0 +1,3 @@
+52.83.247.151   meta pigsty g.pigsty p.pigsty
+161.189.95.174  olap
+69.230.250.224  oltp
