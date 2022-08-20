@@ -1,0 +1,76 @@
+$ pgbench -rnv -P5 --select-only -T300 -M prepared -s4000 -j48 -c48 ${PGURL}
+pgbench (14.5)
+pgbench: warning: scale option ignored, using count from pgbench_branches table (4000)
+progress: 5.0 s, 1323824.4 tps, lat 0.036 ms stddev 0.025
+progress: 10.0 s, 1303794.5 tps, lat 0.037 ms stddev 0.024
+progress: 15.0 s, 1305974.7 tps, lat 0.036 ms stddev 0.023
+progress: 20.0 s, 1308942.9 tps, lat 0.036 ms stddev 0.024
+progress: 25.0 s, 1306950.4 tps, lat 0.036 ms stddev 0.027
+progress: 30.0 s, 1302559.7 tps, lat 0.037 ms stddev 0.029
+progress: 35.0 s, 1301174.0 tps, lat 0.037 ms stddev 0.027
+progress: 40.0 s, 1297936.1 tps, lat 0.037 ms stddev 0.024
+progress: 45.0 s, 1296285.3 tps, lat 0.037 ms stddev 0.027
+progress: 50.0 s, 1304547.9 tps, lat 0.037 ms stddev 0.025
+progress: 55.0 s, 1297819.4 tps, lat 0.037 ms stddev 0.030
+progress: 60.0 s, 1302840.1 tps, lat 0.037 ms stddev 0.032
+progress: 65.0 s, 1302926.6 tps, lat 0.037 ms stddev 0.030
+progress: 70.0 s, 1296199.5 tps, lat 0.037 ms stddev 0.028
+progress: 75.0 s, 1293705.7 tps, lat 0.037 ms stddev 0.032
+progress: 80.0 s, 1291942.2 tps, lat 0.037 ms stddev 0.024
+progress: 85.0 s, 1292924.3 tps, lat 0.037 ms stddev 0.026
+progress: 90.0 s, 1290680.1 tps, lat 0.037 ms stddev 0.027
+progress: 95.0 s, 1299161.9 tps, lat 0.037 ms stddev 0.029
+progress: 100.0 s, 1296893.2 tps, lat 0.037 ms stddev 0.025
+progress: 105.0 s, 1298617.6 tps, lat 0.037 ms stddev 0.027
+progress: 110.0 s, 1293143.3 tps, lat 0.037 ms stddev 0.030
+progress: 115.0 s, 1293541.3 tps, lat 0.037 ms stddev 0.032
+progress: 120.0 s, 1294264.5 tps, lat 0.037 ms stddev 0.026
+progress: 125.0 s, 1298135.0 tps, lat 0.037 ms stddev 0.026
+progress: 130.0 s, 1300075.3 tps, lat 0.037 ms stddev 0.033
+progress: 135.0 s, 1296309.8 tps, lat 0.037 ms stddev 0.032
+progress: 140.0 s, 1292821.8 tps, lat 0.037 ms stddev 0.029
+progress: 145.0 s, 1298199.1 tps, lat 0.037 ms stddev 0.028
+progress: 150.0 s, 1291009.6 tps, lat 0.037 ms stddev 0.027
+progress: 155.0 s, 1290657.2 tps, lat 0.037 ms stddev 0.024
+progress: 160.0 s, 1298015.0 tps, lat 0.037 ms stddev 0.031
+progress: 165.0 s, 1296383.9 tps, lat 0.037 ms stddev 0.027
+progress: 170.0 s, 1285930.2 tps, lat 0.037 ms stddev 0.027
+progress: 175.0 s, 1298397.0 tps, lat 0.037 ms stddev 0.028
+progress: 180.0 s, 1295993.9 tps, lat 0.037 ms stddev 0.032
+progress: 185.0 s, 1294126.0 tps, lat 0.037 ms stddev 0.028
+progress: 190.0 s, 1297207.8 tps, lat 0.037 ms stddev 0.028
+progress: 195.0 s, 1299415.6 tps, lat 0.037 ms stddev 0.028
+progress: 200.0 s, 1293662.5 tps, lat 0.037 ms stddev 0.027
+progress: 205.0 s, 1304151.5 tps, lat 0.037 ms stddev 0.027
+progress: 210.0 s, 1297052.8 tps, lat 0.037 ms stddev 0.031
+progress: 215.0 s, 1287973.4 tps, lat 0.037 ms stddev 0.024
+progress: 220.0 s, 1288019.5 tps, lat 0.037 ms stddev 0.026
+progress: 225.0 s, 1292756.2 tps, lat 0.037 ms stddev 0.022
+progress: 230.0 s, 1297678.6 tps, lat 0.037 ms stddev 0.028
+progress: 235.0 s, 1292680.2 tps, lat 0.037 ms stddev 0.032
+progress: 240.0 s, 1294056.5 tps, lat 0.037 ms stddev 0.026
+progress: 245.0 s, 1295864.3 tps, lat 0.037 ms stddev 0.029
+progress: 250.0 s, 1287995.1 tps, lat 0.037 ms stddev 0.025
+progress: 255.0 s, 1297216.5 tps, lat 0.037 ms stddev 0.029
+progress: 260.0 s, 1286772.8 tps, lat 0.037 ms stddev 0.030
+progress: 265.0 s, 1296964.9 tps, lat 0.037 ms stddev 0.028
+progress: 270.0 s, 1290158.5 tps, lat 0.037 ms stddev 0.024
+progress: 275.0 s, 1290937.3 tps, lat 0.037 ms stddev 0.029
+progress: 280.0 s, 1293884.6 tps, lat 0.037 ms stddev 0.030
+progress: 285.0 s, 1294018.8 tps, lat 0.037 ms stddev 0.028
+progress: 290.0 s, 1295213.4 tps, lat 0.037 ms stddev 0.027
+progress: 295.0 s, 1294939.2 tps, lat 0.037 ms stddev 0.027
+transaction type: <builtin: select only>
+scaling factor: 4000
+query mode: prepared
+number of clients: 48
+number of threads: 48
+duration: 300 s
+number of transactions actually processed: 388973068
+latency average = 0.037 ms
+latency stddev = 0.028 ms
+initial connection time = 31.921 ms
+tps = 1296712.218220 (without initial connection time)
+statement latencies in milliseconds:
+         0.001  \set aid random(1, 100000 * :scale)
+         0.036  SELECT abalance FROM pgbench_accounts WHERE aid = :aid;

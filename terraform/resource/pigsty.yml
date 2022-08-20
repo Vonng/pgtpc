@@ -82,8 +82,8 @@ all:
         10.10.10.12: { pg_seq: 1, pg_role: primary }
       vars:
         pg_cluster: pg-olap
-        node_tune: olap
-        pg_conf: olap.yml
+        node_tune: oltp
+        pg_conf: oltp.yml
         pg_users: [ { name: test , password: test , pgbouncer: true , roles: [ dbrole_admin ] , comment: test user } ]
         pg_databases: [ { name: test , extensions: [ { name: postgis, schema: public } ] } ]
 
