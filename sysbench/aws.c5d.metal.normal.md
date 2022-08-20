@@ -1,8 +1,10 @@
 # SYSBENCH RESULT FOR PGSQL @ AWS.C5D.METAL
 
+
+
 ## Result
 
-PostgreSQL 14.5 on `c5d.metal` , 96C/192G
+PostgreSQL 14.5 on `c5d.metal` , 96C/192G. Standard production configuration.
 
 |         mode          |   QPS    |  TPS  |
 | :-------------------: |:--------:| :---: |
@@ -16,6 +18,9 @@ PostgreSQL 14.5 on `c5d.metal` , 96C/192G
 |    oltp_write_only    |  495942  | 82656 |
 | oltp_update_non_index |  217626  |       |
 |   oltp_update_index   |  169714  |       |
+
+
+
 
 
 ## Procedure

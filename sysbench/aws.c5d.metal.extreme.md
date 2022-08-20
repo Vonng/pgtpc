@@ -1,7 +1,20 @@
 # SYSBENCH RESULT FOR PGSQL @ AWS.C5D.METAL
 
 
+
 ## Result
+
+| Database              | PGSQL.48C  | PGSQL.96C |
+| --------------------- | ---------- | --------- |
+| oltp_point_select     | 1814404    | 2332928   |
+| oltp_read_only        | 941694     |           |
+| oltp_read_write       | 722907     | 910554    |
+| oltp_update_non_index | 269233     |           |
+| Comment               | FORCE c=48 |           |
+
+Point Select Performence
+
+![](c5d.metal.img/point-select-extreme-curve.png)
 
 
 

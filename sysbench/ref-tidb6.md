@@ -2,6 +2,8 @@
 
 https://docs.pingcap.com/tidb/stable/benchmark-sysbench-v6.1.0-vs-v6.0.0
 
+
+
 ## Test overview
 
 This test aims at comparing the Sysbench performance of TiDB v6.1.0 and TiDB v6.0.0 in the Online Transactional Processing (OLTP) scenario. The results show that performance of v6.1.0 is improved in the write workload. The performance of write-heavy workload is improved by 2.33% ~ 4.61%.
@@ -36,6 +38,7 @@ Compute power of PD + TiKV + TiDB is roughly equvilent to
 | oltp_update_non_index | 40814  | 51746  | 59095  |
 |   oltp_update_index   | 18187  | 22270  | 25118  |
 |    oltp_read_write    |  4829  |  5693  |  6029  |
+
 
 
 ## Test environment (AWS EC2）

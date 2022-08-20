@@ -17,10 +17,10 @@ http://dimitrik.free.fr/blog/posts/mysql-performance-80-and-sysbench-oltp_rw-upd
 ## MySQL Performence
 
 |       TestCase        |   TPS   |         Scale          |                            Source                            |
-| :-------------------: | :-----: | :--------------------: | :----------------------------------------------------------: |
+| :-------------------: |:-------:| :--------------------: | :----------------------------------------------------------: |
 |   oltp_point_select   | 1050000 | 50 M Tuples x 8 Tables | [Source 1](http://dimitrik.free.fr/blog/posts/mysql-performance-1m-iobound-qps-with-80-ga-on-intel-optane-ssd.html) |
 |    oltp_read_only     | 920000  | 10 M Tuples x 8 Tables | [Source 2](http://dimitrik.free.fr/blog/posts/mysql-performance-80-and-sysbench-oltp_rw-updatenokey.html) |
-|    oltp_read_write    | 500000  | 10 M Tuples x 8 Tables |                           Source2                            |
+|    oltp_read_write    | 900000  | 10 M Tuples x 8 Tables |                           Source2                            |
 | oltp_update_non_index | 240000  | 10 M Tuples x 8 Tables |                           Source2                            |
 
 
@@ -31,7 +31,7 @@ http://dimitrik.free.fr/blog/posts/mysql-performance-80-and-sysbench-oltp_rw-upd
 | :-------------------: | :-------------------------------: | :------------------------: | :------------------------: |
 |   oltp_point_select   |              1050000              |          1814404           |          2332928           |
 |    oltp_read_only     |              920000               |           941694           |                            |
-|    oltp_read_write    |              500000               |           722907           |           910554           |
+|    oltp_read_write    |              900000               |           722907           |           910554           |
 | oltp_update_non_index |              240000               |           269233           |                            |
 |          CPU          |            48C 2.7GHz             |         96C 3.6GHz         |         96C 3.6GHz         |
 |          Mem          |              172 GB               |           192 GB           |           192 GB           |
@@ -61,7 +61,7 @@ http://dimitrik.free.fr/blog/posts/mysql-performance-80-and-sysbench-oltp_rw-upd
 ### Raw Data
 
 
-|  c  |   qps   |
+|  c  |   QPS   |
 |:---:|:-------:|
 |  1  |  42227  |
 |  2  |  96009  |

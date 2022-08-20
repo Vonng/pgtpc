@@ -5,7 +5,7 @@ https://www.oceanbase.com/docs/community/observer-cn/V3.1.4/10000000000450311
 |      服务类型     |                           ECS 类型                           | 实例数 | CPU  | 内存 | 主频 |   总计   |
 | :--------------: | :----------------------------------------------------------: | :----: | :--: | :--: | :--: | :------: |
 |   OceanBase      | [ecs.hfg7.8xlarge](https://help.aliyun.com/document_detail/25378.html#hfg7) |   3    | 32C  | 128G | 3.8G | 96C 384G |
-|  ODP / Sysbench  |                       ecs.hfg7.8xlarge                       |   1    | 32C  | 128G | 3.8G | 3.8 GHz  |
+|  ODP / Sysbench  |                       [ecs.hfg7.8xlarge](https://help.aliyun.com/document_detail/25378.html#hfg7)                       |   1    | 32C  | 128G | 3.8G | 3.8 GHz  |
 
 
 
