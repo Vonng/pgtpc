@@ -29,9 +29,19 @@ HugePage 2MB x 70000
 
 Typical performance :
 
-* Read Only (Point Select) : [130w @ 48c](/Users/vonng/dev/pgtpc/pgbench/c5d-metal-extreme/ro-48)
-* Read Only (Point Select) : [200w @ 96c](/Users/vonng/dev/pgtpc/pgbench/c5d-metal-extreme/ro-555)
+* Read Only (Point Select) : [130w @ 48c](c5d.metal.extreme/ro-48)
+* Read Only (Point Select) : [200w @ 96c](c5d.metal.extreme/ro-555)
 * Read Write : 137127 @ 32c
+
+* [ro-1](c5d.metal.extreme/ro-1)
+* [ro-48](c5d.metal.extreme/ro-48)
+* [ro-384](c5d.metal.extreme/ro-384)
+* [ro-512](c5d.metal.extreme/ro-512)
+* [ro-555](c5d.metal.extreme/ro-555)
+* [rw-1](c5d.metal.extreme/rw-1)
+* [rw-32](c5d.metal.extreme/rw-32)
+* [rw-48](c5d.metal.extreme/rw-48)
+* [rw-512](c5d.metal.extreme/rw-512)
 
 
 
