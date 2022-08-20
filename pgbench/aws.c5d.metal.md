@@ -1,8 +1,6 @@
-# AWS c5d.metal
+# AWS c5d.metal 96C 192G 3.6GHz
 
 96 vCPU x 3.6 GHz , 192 GB Memory , 900GB x 4 NVME SSD
-
-
 
 ## Result
 
@@ -28,18 +26,42 @@ s1000 = 100M tuples = 16GB
 
 Read Write : 70K TPS (c=96)
 
-![](c5d-metal/s1000-rw.png)
+![](c5d.metal/s1000-rw.png)
 
 Read Only: 690K TPS (c=96)
 
-![](c5d-metal/s1000-ro.png)
+![](c5d.metal/s1000-ro.png)
 
-
-
-
-
-
-
+* (ro-1)[c5d.metal/ro-1.txt]
+* (ro-2)[c5d.metal/ro-2.txt]
+* (ro-4)[c5d.metal/ro-4.txt]
+* (ro-8)[c5d.metal/ro-8.txt]
+* (ro-16)[c5d.metal/ro-16.txt]
+* (ro-32)[c5d.metal/ro-32.txt]
+* (ro-64)[c5d.metal/ro-64.txt]
+* (ro-96)[c5d.metal/ro-96.txt]
+* (ro-128)[c5d.metal/ro-128.txt]
+* (ro-160)[c5d.metal/ro-160.txt]
+* (ro-192)[c5d.metal/ro-192.txt]
+* (ro-224)[c5d.metal/ro-224.txt]
+* (ro-256)[c5d.metal/ro-256.txt]
+* (ro-384)[c5d.metal/ro-384.txt]
+* (ro-512)[c5d.metal/ro-512.txt]
+* (rw-1)[c5d.metal/rw-1.txt]
+* (rw-2)[c5d.metal/rw-2.txt]
+* (rw-4)[c5d.metal/rw-4.txt]
+* (rw-8)[c5d.metal/rw-8.txt]
+* (rw-16)[c5d.metal/rw-16.txt]
+* (rw-32)[c5d.metal/rw-32.txt]
+* (rw-64)[c5d.metal/rw-64.txt]
+* (rw-96)[c5d.metal/rw-96.txt]
+* (rw-128)[c5d.metal/rw-128.txt]
+* (rw-160)[c5d.metal/rw-160.txt]
+* (rw-192)[c5d.metal/rw-192.txt]
+* (rw-224)[c5d.metal/rw-224.txt]
+* (rw-256)[c5d.metal/rw-256.txt]
+* (rw-384)[c5d.metal/rw-384.txt]
+* (rw-512)[c5d.metal/rw-512.txt]
 
 
 

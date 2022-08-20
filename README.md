@@ -1,9 +1,8 @@
-# TPC benchmark for PostgreSQL
+# Benchmark for PostgreSQL
 
-
-* [TPC-B for PostgreSQL](tpcb/)
-* [TPC-C for PostgreSQL](tpcc/)
-* [TPC-H for PostgreSQL](tpch/)
+* [pgbench](tpcb/)
+* [sysbench](tpcc/)
+* [TPC-H](tpch/)
 
 ----------------------
 

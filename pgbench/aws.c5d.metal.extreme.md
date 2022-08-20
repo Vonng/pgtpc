@@ -1,4 +1,4 @@
-# PGBENCH on AWS c5d.metal (EXTREME RECORD)
+# AWS c5d.metal (EXTREME RECORD)
 
 96 vCPU x 3.6 GHz , 192 GB Memory , 900GB x 4 NVME SSD
 
@@ -38,7 +38,6 @@ Typical performance :
 ## Prepare
 
 Same as c5d-metal.md , but use [postgresql-extreme](postgresql-extreme.auto.conf] conf instead.
-
 
 
 ```bash
