@@ -1,13 +1,13 @@
-# Benchmark for PostgreSQL
+# How fast can PostgreSQL go?
 
-> Figures, Numbers about how fast postgres can go!
+> Figures, Numbers, Benchmarks about how fast can PostgreSQL go!
 
 * https://github.com/Vonng/pgtpc
 * [pgbench](pgbench/)： Meaure PostgreSQL performence on different hardwares.
 * [sysbench](sysbench/)：Compare PostgreSQL performence with MySQL & other databases
 * [tpc-h](tpch/)：Measure PostgreSQL Analysis performence and compare to other AP systems
 
-
+* Author: [Vonng](https://github.com/Vonng)
 
 ### PGBENCH
 
