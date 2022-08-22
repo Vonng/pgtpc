@@ -2,7 +2,9 @@
 
 > 用性能数据说话，为什么PostgreSQL是世界上最先进的开源关系型数据库，暨世界上最成功的数据库。
 
-在上一篇文章里，我们通过分析 StackOverflow 的用户调研数据，说明了《[为什么PostgreSQL是最成功的数据库](http://pigsty.cc/zh/blog/2022/07/12/%E4%B8%BA%E4%BB%80%E4%B9%88postgresql%E6%98%AF%E6%9C%80%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/)》。而这一次我们将用性能数据来说话，聊聊最成功的 PostgreSQL 到底有多强，帮助大家做到“心中有数”。
+上一次我们通过分析 StackOverflow 的用户调研数据，说明了《[为什么PostgreSQL是最成功的数据库](http://pigsty.cc/zh/blog/2022/07/12/%E4%B8%BA%E4%BB%80%E4%B9%88postgresql%E6%98%AF%E6%9C%80%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/)》。
+
+而这一次我们将用性能数据来说话，聊聊最成功的 PostgreSQL 到底有多强，帮助大家做到“心中有数”。
 
 
 
@@ -103,10 +105,6 @@ PGBENCH是 PostgreSQL 自带的压测工具，默认使用类 TPC-B 的查询，
 
 
 
-
-
-
-
 ## SYSBENCH
 
 PostgreSQL 确实很强，但与其他数据库系统相比则何如？PGBENCH 主要用于评估 PostgreSQL 及其衍生/兼容数据库的性能，但如果需要横向比较不同数据库的性能表现，我们就要用到 SYSBENCH 了。
@@ -127,11 +125,15 @@ SYSBENCH 既可以用于测试 MySQL 的性能，也可以用来测试 PgSQL 的
 
 这是相当不讲武德的行为。因为如果阅览了连接的评测文章就会发现：这是把所有 MySQL 安全特性关闭得到的结果：关闭Binlog，提交刷盘，FSYNC，性能监控，DoubleWrite，校验和，强制使用 LATIN-1 字符集，这样的数据库根本没法用于生产环境，只是为了刷分而刷分。
 
-但反过来说，我们也可以使用这些 Dirty Hack，把对应的 PostgreSQL 安全特性也关闭，也看看 PostgreSQL 的最终极限在哪里？结果相当震撼，PGSQL点查QPS干到了233万每秒，峰值远远甩开 MySQL 一倍还多。
+但反过来说，我们也可以使用这些 Dirty Hack，把对应的 PostgreSQL 安全特性也关闭，也看看 PostgreSQL 的最终极限在哪里？结果相当震撼，PGSQL点查QPS干到了 [233万每秒](https://github.com/Vonng/pgtpc/blob/master/sysbench/c5d.metal.extreme/point-104)，峰值远远甩开 MySQL 一倍还多。
 
 ![sysbench-point-select](sysbench/sysbench-point-select.png)
 
 > 图：不讲武德的Benchmar：PgSQL vs MySQL
+
+![](sysbench/point-select-metric.png)
+
+> PostgreSQL 极限配置下点查压测现场
 
 必须说明的是，MySQL 的bench使用的是 48C 2.7GHz的机器，而PostgreSQL使用的是 96C 3.6GHz 的机器。不过因为PG使用进程模型，我们可以使用 c=48 的测试值作为 PG 在 48C 机器上表现的一个下限近似：对于只读请求，QPS峰值通常在客户端数略大于CPU核数时达到。即便如此，c=48 时PG的点查 QPS（ 150万）仍然比MySQL峰值高了43%。
 
@@ -205,9 +207,7 @@ TPC-H这是一个模拟数仓，包含8张数据表，与22条复杂分析类SQL
 |      1       |   13.5   |  8   |  8C  / 64G  |  z1d.2xlarge  |
 |      10      |   133    |  8   |  8C  / 64G  |  z1d.2xlarge  |
 
-作为横向对比，我们选取了一些其他数据库官网或比较详细的第三方测评结果。不过在对比前，有几点需要注意：一是有一些数据库产品仓数并非100，二来硬件规格也不尽相同，三来并不是所有数据库评测结果都来自原厂，因此只能作为大致的对照和参考。
-
-
+作为横向对比，我们选取了一些其他数据库官网或比较详细的第三方测评结果。不过在对比前，有几点需要注意：一是有一些数据库产品仓数并非100，二来硬件规格也不尽相同，三来并不是所有数据库评测结果都来自原厂，因此只能作为**大致的对照和参考**。
 
 |  Database  |  Time  |  S   | CPU  | QPH  |     Environment      |                            Source                            |
 | :--------: | :----: | :--: | :--: | :--: | :------------------: | :----------------------------------------------------------: |
@@ -247,20 +247,27 @@ TPC-H这是一个模拟数仓，包含8张数据表，与22条复杂分析类SQL
 
 
 
+综上所述，PostgreSQL 在 TP 领域表现极其亮眼，在 AP 领域表现可圈可点。这也难怪在最近几年的 StackOverflow 开发者年度调研中， PostgreSQL 成为了 专业开发者最常用，最受喜爱，最想要的[三冠王数据库](http://pigsty.cc/zh/blog/2022/07/12/%E4%B8%BA%E4%BB%80%E4%B9%88postgresql%E6%98%AF%E6%9C%80%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/)。
+
+![](stackoverflow-survey.png)
+
+> StackOverflow 近六年数据库开发者调研结果 
+
 
 
 ## 参考
 
-[1]: https://github.com/Vonng/pgtpc	"Vonng: PGTPC"
-[2]: https://www.mysql.com/cn/why-mysql/benchmarks/mysql/	"WHY MYSQL"
-[3]: http://dimitrik.free.fr/blog/posts/mysql-performance-1m-iobound-qps-with-80-ga-on-intel-optane-ssd.html "MySQL Performance : 1M *IO-bound* QPS with 8.0 GA on Intel Optane SSD !"
-[4]: http://dimitrik.free.fr/blog/posts/mysql-performance-80-and-sysbench-oltp_rw-updatenokey.html "MySQL Performance : 8.0 and Sysbench OLTP_RW / Update-NoKEY"
-[5]: http://dimitrik.free.fr/blog/posts/mysql-80-perf-new-dblwr.html "MySQL Performance : The New InnoDB Double Write Buffer in Action"
-[6]: https://docs.pingcap.com/tidb/stable/benchmark-sysbench-v6.1.0-vs-v6.0.0 "TiDB Sysbench Performance Test Report -- v6.1.0 vs. v6.0.0"
-[7]: https://www.oceanbase.com/docs/community/observer-cn/V3.1.4/10000000000450311 "OceanBase 3.1 Sysbench 性能测试报告"
-[8]: https://www.cockroachlabs.com/docs/stable/performance.html "Cockroach 22.15 Benchmarking Overview"
-[9]: https://docs.yugabyte.com/preview/benchmark/sysbench-ysql/ "Benchmark YSQL performance using sysbench (v2.15)"
-[10]: https://help.aliyun.com/document_detail/139562.html "PolarDB-X 1.0 Sysbench 测试说明"
-[11]: https://stonedb.io/zh/docs/performance-tuning/performance-tests/OLAP/tcph-test-report/ "StoneDB OLAP TCP-H测试报告"
-[12]: https://dl.acm.org/doi/10.1145/3514221.3526148	"Elena Milkai: "How Good is My HTAP System?",SIGMOD ’22 Session 25"
-[13]: https://calculator.amazonaws.cn/ "AWS Calculator"
+[1]  https://github.com/Vonng/pgtpc	"Vonng: PGTPC"
+[2]  https://www.mysql.com/cn/why-mysql/benchmarks/mysql/	"WHY MYSQL"
+[3]  http://dimitrik.free.fr/blog/posts/mysql-performance-1m-iobound-qps-with-80-ga-on-intel-optane-ssd.html "MySQL Performance : 1M *IO-bound* QPS with 8.0 GA on Intel Optane SSD !"
+[4]  http://dimitrik.free.fr/blog/posts/mysql-performance-80-and-sysbench-oltp_rw-updatenokey.html "MySQL Performance : 8.0 and Sysbench OLTP_RW / Update-NoKEY"
+[5]  http://dimitrik.free.fr/blog/posts/mysql-80-perf-new-dblwr.html "MySQL Performance : The New InnoDB Double Write Buffer in Action"
+[6]  https://docs.pingcap.com/tidb/stable/benchmark-sysbench-v6.1.0-vs-v6.0.0 "TiDB Sysbench Performance Test Report -- v6.1.0 vs. v6.0.0"
+[7]  https://www.oceanbase.com/docs/community/observer-cn/V3.1.4/10000000000450311 "OceanBase 3.1 Sysbench 性能测试报告"
+[8]  https://www.cockroachlabs.com/docs/stable/performance.html "Cockroach 22.15 Benchmarking Overview"
+[9]  https://docs.yugabyte.com/preview/benchmark/sysbench-ysql/ "Benchmark YSQL performance using sysbench (v2.15)"
+[10] https://help.aliyun.com/document_detail/139562.html "PolarDB-X 1.0 Sysbench 测试说明"
+[11] https://stonedb.io/zh/docs/performance-tuning/performance-tests/OLAP/tcph-test-report/ "StoneDB OLAP TCP-H测试报告"
+[12] https://dl.acm.org/doi/10.1145/3514221.3526148 Elena Milkai: How Good is My HTAP System?,SIGMOD ’22 Session 25
+[13] https://calculator.amazonaws.cn/ "AWS Calculator"
+
