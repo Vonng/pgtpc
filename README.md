@@ -9,6 +9,8 @@
 
 * Author: [Vonng](https://github.com/Vonng)
 
+
+
 ### PGBENCH
 
 PostgreSQL have marvelous OTLP performence measured with pgbench (TPC-B Like).
@@ -47,18 +49,6 @@ Record: 2M point select QPS, 137K write TPS (1 Xact = 5 Queries / USUUI )
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## SYSBENCH 
 
 PGSQL has a similar write performance and significantly better read performance to MySQL.
@@ -87,8 +77,6 @@ PGSQL & MYSQL both overwhelm several "Distributed Databases".
 
 
 ![sysbench-overview](sysbench/sysbench-overview.png)
-
-
 
 
 
@@ -142,10 +130,6 @@ However we can using the same dirty hack in PostgreSQL and see how far it goes.
 
 
 
-
-
-
-
 ## TPC-H
 
 PostgreSQL has pretty good OLAP performence / effect comparing to other Ad-hoc AP systems.
@@ -165,26 +149,45 @@ PostgreSQL can finish tpc-h50 in 22min, and tpc-h100 in 80min on a 10C laptop.
 
 We can measure relative AP effectiveness by normalize CPU core numbers, Scale Factors. Just for a rough references: Effect = Estimated TPC-H Time spent completing 1 Warehouse using 1 Core. 
 
-> Effect = Time / Scale Factor * CPU
+> QPH = ( 1 / time )  * ( scale_factor / core ) * 3600
 
-![](tpch/tpc-h.png)
+![](tpch/tpch-qph.png)
 
-| Database   | SF   | Time (s) | CPU  | Environment   | Comment       | Source                                                       | Effect |
-| ---------- | ---- | -------- | ---- | ------------- | ------------- | ------------------------------------------------------------ | :----: |
-| PostgreSQL | 1    | 8        | 10   | 10C  / 64G    | apple  m1 max | [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)     |   80   |
-| PostgreSQL | 10   | 56       | 10   | 10C  / 64G    | apple  m1 max | [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)     |   56   |
-| PostgreSQL | 50   | 1327     | 10   | 10C  / 64G    | apple  m1 max | [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)     |  265   |
-| PostgreSQL | 100  | 4835     | 10   | 10C  / 64G    | apple  m1 max | [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)     |  484   |
-| PostgreSQL | 1    | 13.51    | 8    | 8C  / 64G     | z1d.2xlarge   | [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)     |  108   |
-| PostgreSQL | 10   | 133.35   | 8    | 8C  / 64G     | z1d.2xlarge   | [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)     |  107   |
-| TiDB       | 100  | 190      | 120  | 120C  / 570G  |               | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |  228   |
-| Spark      | 100  | 388      | 120  | 120C  / 570G  |               | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |  466   |
-| Greenplum  | 100  | 436      | 288  | 120C  / 570G  |               | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |  1256  |
-| DeepGreen  | 200  | 148      | 256  | 288C  / 1152G |               | [Digoal](https://billtian.github.io/digoal.blog/2018/09/03/02.html) |  189   |
-| MatrixDB   | 1000 | 2306     | 256  | 256C  / 1024G |               | [MXDB](https://cloud.tencent.com/developer/article/1997622)  |  590   |
-| Hive       | 1000 | 59599    | 256  | 256C  / 1024G |               | [MXDB](https://cloud.tencent.com/developer/article/1997622)  | 15257  |
-| StoneDB    | 100  | 3388     | 64   | 64C  / 128G   |               | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |  2168  |
-| ClickHouse | 100  | 11537    | 64   | 64C  / 128G   |               | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |  7384  |
-| OceanBase  | 100  | 189      | 96   | 96C  / 384G   |               | [OceanBase](https://open.oceanbase.com/docs/community/oceanbase-database/V3.1.0/wtu4kv) |  181   |
-| PolarDB    | 50   | 387      | 32   | 32C  / 128G   |               | [Aliyun](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%E6%80%A7%E8%83%BD%E7%99%BD%E7%9A%AE%E4%B9%A6_cn_zh-CN.pdf) |  248   |
-| PolarDB    | 50   | 755      | 16   | 16C  / 64G    |               | [Aliyun](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%E6%80%A7%E8%83%BD%E7%99%BD%E7%9A%AE%E4%B9%A6_cn_zh-CN.pdf) |  242   |
+|  Database  |  SF  | Time (s) | CPU  |  Environment  |    Comment    |                            Source                            | Effect |
+| :--------: | :--: | :------: | :--: | :-----------: | :-----------: | :----------------------------------------------------------: | :----: |
+| PostgreSQL |  1   |    8     |  10  |  10C  / 64G   | apple  m1 max |   [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)   |   80   |
+| PostgreSQL |  10  |    56    |  10  |  10C  / 64G   | apple  m1 max |   [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)   |   56   |
+| PostgreSQL |  50  |   1327   |  10  |  10C  / 64G   | apple  m1 max |   [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)   |  265   |
+| PostgreSQL | 100  |   4835   |  10  |  10C  / 64G   | apple  m1 max |   [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)   |  484   |
+| PostgreSQL |  1   |  13.51   |  8   |   8C  / 64G   |  z1d.2xlarge  |   [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)   |  108   |
+| PostgreSQL |  10  |  133.35  |  8   |   8C  / 64G   |  z1d.2xlarge  |   [Vonng](https://github.com/Vonng/pgtpc/tree/master/tpch)   |  107   |
+|    TiDB    | 100  |   190    | 120  | 120C  / 570G  |               | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |  228   |
+|   Spark    | 100  |   388    | 120  | 120C  / 570G  |               | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |  466   |
+| Greenplum  | 100  |   436    | 288  | 120C  / 570G  |               | [TiDB](https://docs.pingcap.com/zh/tidb/v5.2/v5.2-performance-benchmarking-with-tpch) |  1256  |
+| DeepGreen  | 200  |   148    | 256  | 288C  / 1152G |               | [Digoal](https://billtian.github.io/digoal.blog/2018/09/03/02.html) |  189   |
+|  MatrixDB  | 1000 |   2306   | 256  | 256C  / 1024G |               | [MXDB](https://cloud.tencent.com/developer/article/1997622)  |  590   |
+|    Hive    | 1000 |  59599   | 256  | 256C  / 1024G |               | [MXDB](https://cloud.tencent.com/developer/article/1997622)  | 15257  |
+|  StoneDB   | 100  |   3388   |  64  |  64C  / 128G  |               | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |  2168  |
+| ClickHouse | 100  |  11537   |  64  |  64C  / 128G  |               | [StoneDB](https://stonedb.io/docs/performance-tuning/performance-tests/OLAP/tcph-test-report) |  7384  |
+| OceanBase  | 100  |   189    |  96  |  96C  / 384G  |               | [OceanBase](https://open.oceanbase.com/docs/community/oceanbase-database/V3.1.0/wtu4kv) |  181   |
+|  PolarDB   |  50  |   387    |  32  |  32C  / 128G  |               | [Aliyun](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%E6%80%A7%E8%83%BD%E7%99%BD%E7%9A%AE%E4%B9%A6_cn_zh-CN.pdf) |  248   |
+|  PolarDB   |  50  |   755    |  16  |  16C  / 64G   |               | [Aliyun](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F59748%2F%E6%80%A7%E8%83%BD%E7%99%BD%E7%9A%AE%E4%B9%A6_cn_zh-CN.pdf) |  242   |
+
+
+
+## Reference
+
+[1]: https://github.com/Vonng/pgtpc	"Vonng: PGTPC"
+[2]: https://www.mysql.com/cn/why-mysql/benchmarks/mysql/	"WHY MYSQL"
+[3]: http://dimitrik.free.fr/blog/posts/mysql-performance-1m-iobound-qps-with-80-ga-on-intel-optane-ssd.html "MySQL Performance : 1M *IO-bound* QPS with 8.0 GA on Intel Optane SSD !"
+[4]: http://dimitrik.free.fr/blog/posts/mysql-performance-80-and-sysbench-oltp_rw-updatenokey.html "MySQL Performance : 8.0 and Sysbench OLTP_RW / Update-NoKEY"
+[5]: http://dimitrik.free.fr/blog/posts/mysql-80-perf-new-dblwr.html "MySQL Performance : The New InnoDB Double Write Buffer in Action"
+[6]: https://docs.pingcap.com/tidb/stable/benchmark-sysbench-v6.1.0-vs-v6.0.0 "TiDB Sysbench Performance Test Report -- v6.1.0 vs. v6.0.0"
+[7]: https://www.oceanbase.com/docs/community/observer-cn/V3.1.4/10000000000450311 "OceanBase 3.1 Sysbench 性能测试报告"
+[8]: https://www.cockroachlabs.com/docs/stable/performance.html "Cockroach 22.15 Benchmarking Overview"
+[9]: https://docs.yugabyte.com/preview/benchmark/sysbench-ysql/ "Benchmark YSQL performance using sysbench (v2.15)"
+[10]: https://help.aliyun.com/document_detail/139562.html "PolarDB-X 1.0 Sysbench 测试说明"
+[11]: https://stonedb.io/zh/docs/performance-tuning/performance-tests/OLAP/tcph-test-report/ "StoneDB OLAP TCP-H测试报告"
+[12]: https://dl.acm.org/doi/10.1145/3514221.3526148	"Elena Milkai: "How Good is My HTAP System?",SIGMOD ’22 Session 25"
+[13]: https://calculator.amazonaws.cn/ "AWS Calculator"
+

@@ -21,6 +21,27 @@ Details:
 
 
 
+|           Spec            | CPU  |   RO    |   RW   |
+| :-----------------------: | :--: | :-----: | :----: |
+| Apple MBP Intel 2018  6C  |  6   | 113870  | 15141  |
+|   AWS z1d.2xlarge 8C64G   |  8   | 162315  | 24808  |
+| Apple MBP M1 Max 2021  8C |  10  | 240841  | 31903  |
+|  AWS C5D.Metal 96C  192G  |  96  | 625849  | 71624  |
+|  AWS  C5D.Metal Extreme   |  96  | 1998580 | 137127 |
+
+|        Identity        | CPU  |    Frequency     | Database Conf | PGBENCH s=? |
+| :--------------------: | ---- | :--------------: | :-----------: | :---------: |
+| Apple  MBP M1 Max 2021 | 10   | 0.6GHz - 3.22GHz |    Normal     |    1000     |
+| Apple  MBP Intel 2018  | 6    | 2.9GHz - 4.8GHz  |    Normal     |    1000     |
+|  AWS  C5D.Metal s1000  | 96   |      3.6GHz      |    Normal     |    1000     |
+|  AWS  C5D.Metal s5000  | 96   |      3.6GHz      |    Extreme    |    5000     |
+
+
+
+
+
+
+
 
 ## Summary: Read Only
 
@@ -45,5 +66,4 @@ Details:
 | AWS C5D.Metal s5000   | 6864 | 14904 | 29481 | 57959 | 110893 | 137127 | 107960 | 93477 |
 
 ![](pgbench-rw.png)
-
 

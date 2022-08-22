@@ -224,7 +224,7 @@ ${sb} --time=300 --threads=512 oltp_update_non_index.lua run 1> /tmp/sysbench/up
 ```
 
 
-oltp_read_write under 10M x 8 / 128G Shared buffer (mysql: 45k/90w)
+oltp_read_write under 10M x 8 / 128G Shared buffer (mysql: 39k/78W)
 
 tps = 36145, qps = 722907 for thread = 48
 tps = 45527, qps = 910554 for thread = 128
